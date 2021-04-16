@@ -107,11 +107,14 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
   service3:
-    working_directory: /go/src/github.com/tufin/circleci-monorepo
+    working_directory: .
     docker:
       - image: cimg/openjdk:11.0
     environment:
       PROJECT_NAME: service3
       TEST_RESULTS: /tmp/test-results
     steps:
+      - run:
+          name: ls
+          command: pwd
       - checkout
