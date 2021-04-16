@@ -106,3 +106,19 @@ jobs:
           destination: raw-test-output
       - store_test_results:
           path: /tmp/test-results
+  service3:
+    working_directory: /go/src/github.com/tufin/circleci-monorepo
+    docker:
+      - image: cimg/openjdk:11.0
+    environment:
+      PROJECT_NAME: service3
+      TEST_RESULTS: /tmp/test-results
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: |
+            javac  service3/A.java
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: raw-test-output
