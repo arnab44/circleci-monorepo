@@ -115,10 +115,3 @@ jobs:
       TEST_RESULTS: /tmp/test-results
     steps:
       - checkout
-      - run:
-          name: Build
-          command: |
-            javac  service3/A.java
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: raw-test-output
